@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
@@ -59,6 +60,8 @@ class Handler extends ExceptionHandler
                 $apiErrorResponse['exception'] = get_class($exception); // Reflection might be better here
                 $apiErrorResponse['message'] = $exception->getMessage();
             }
+
+            Log::error(json_encode($exception->getMessage()));
 
             return response()->json($apiErrorResponse, $apiErrorResponse['code']);
 

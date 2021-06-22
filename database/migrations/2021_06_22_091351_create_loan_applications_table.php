@@ -23,7 +23,7 @@ class CreateLoanApplicationsTable extends Migration
             $table->unsignedSmallInteger('tenure'); // in weeks
             $table->float('interest', 6, 2);
 
-            $table->enum('status', ['applied', 'approved', 'rejected', 'closed']);
+            $table->enum('status', ['applied', 'approved', 'rejected', 'closed'])->default('applied');
 
             $table->foreignId('approver_id')->nullable()->constrained('users')
                 ->onUpdate('cascade')->onDelete('set null');  // person(admin) who has approved the loan

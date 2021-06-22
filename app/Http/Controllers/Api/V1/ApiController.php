@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 
 class ApiController extends Controller
 {
@@ -59,6 +60,7 @@ class ApiController extends Controller
             $response['data'] = $errors;
         }
 
+        Log::error($response);
 
         return response()->json($response, $code);
     }

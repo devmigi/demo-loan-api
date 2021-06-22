@@ -30,7 +30,7 @@ class CreateLoanRepaymentsTable extends Migration
 
             $table->float('paid_amount', 10, 2)->nullable();
 
-            $table->enum('status', ['due', 'paid', 'partially_paid']);
+            $table->enum('status', ['due', 'paid', 'partially_paid'])->default('due');;
 
             $table->timestamps();
         });
