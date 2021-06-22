@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +30,13 @@ Route::prefix('v1')->namespace('V1')->group(function () {
 
 
 
+        // get all loan applications
+        Route::get('/loans', 'LoanApplicationController@index');
+
+        // save new loan application
+        Route::post('/loans', 'LoanApplicationController@store');
+
+
     });
 
 
@@ -41,12 +47,15 @@ Route::prefix('v1')->namespace('V1')->group(function () {
     |--------------------------------------------------------------------------
     */
 
-
     // login user
     Route::post('/login', 'UserController@login');
 
     // signup user
     Route::post('/register', 'UserController@register');
+
+
+    //get all terms
+    Route::get('/interest-rate', 'LoanTermController@index');
 
 
 });
