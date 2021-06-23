@@ -37,6 +37,27 @@ Route::prefix('v1')->namespace('V1')->group(function () {
         Route::post('/loans', 'LoanApplicationController@store');
 
 
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | ADMIN Routes (authenticated)
+        |--------------------------------------------------------------------------
+        | namespace: Api\V1\Admin
+        | prefix: api/v1/admin
+        */
+
+        Route::prefix('admin')->namespace('Admin')->group(function () {
+
+            // get loan application detail
+            Route::get('/loans/{id}', 'LoanApplicationController@show');
+
+            // approve/reject loan application
+            Route::post('/loans/{id}', 'LoanApplicationController@update');
+
+        });
+
+
     });
 
 

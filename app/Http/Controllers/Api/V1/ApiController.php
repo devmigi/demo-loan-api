@@ -60,7 +60,7 @@ class ApiController extends Controller
             $response['data'] = $errors;
         }
 
-        Log::error($response);
+        Log::error(json_encode($response));
 
         return response()->json($response, $code);
     }
