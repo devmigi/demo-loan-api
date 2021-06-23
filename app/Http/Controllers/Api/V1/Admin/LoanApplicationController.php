@@ -69,7 +69,7 @@ class LoanApplicationController extends ApiController
         }
 
 
-        $processed = $this->loanService->processLoan($loan, $request->input('approve'));
+        $processed = $this->loanService->processLoan($loan, $request->input('approve'), $request->user()->id);
 
 
         if($processed){

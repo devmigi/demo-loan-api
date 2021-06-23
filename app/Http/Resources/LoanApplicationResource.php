@@ -21,6 +21,8 @@ class LoanApplicationResource extends JsonResource
             'interest' => $this->interest,
             'status' => $this->status,
             'created_at' => $this->created_at->toDateTimeString(),
+            'repayments' => LoanRepaymentResource::collection($this->whenLoaded('repayments')),
+
         ];
     }
 }

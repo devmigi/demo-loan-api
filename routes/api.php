@@ -38,6 +38,14 @@ Route::prefix('v1')->namespace('V1')->group(function () {
 
 
 
+        // get all loan repayments / emi
+        Route::get('/repayments', 'LoanRepaymentController@index');
+
+        // repay current emi
+        Route::post('/repayments', 'LoanRepaymentController@repay');
+
+
+
 
         /*
         |--------------------------------------------------------------------------

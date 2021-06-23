@@ -22,4 +22,10 @@ class LoanApplication extends Model
     }
 
 
+    public function repayments()
+    {
+        return $this->hasMany('App\Models\LoanRepayment', 'loan_id', 'id');
+    }
+
+
 }

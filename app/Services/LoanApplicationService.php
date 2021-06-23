@@ -24,16 +24,18 @@ class LoanApplicationService
      * @param $approved
      * @return bool
      */
-    public function processLoan(LoanApplication $loan, $approved){
+    public function processLoan(LoanApplication $loan, $approved, $approverId){
 
         DB::beginTransaction();
         try {
             if(!$approved) {
                 $loan->status = "rejected";
+                $loan->approver_id = $approverId;
                 $loan->save();
             }
             else{
                 $loan->status = "approved";
+                $loan->approver_id = $approverId;
                 $loan->save();
 
                 // store loan repayment schedules (Weekly)
