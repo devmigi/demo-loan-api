@@ -61,7 +61,8 @@ class LoanApplicationService
      */
     public function getWeeklyLoanRepayments(LoanApplication $loan){
 
-        $paymentAmount = $loan->amount * (1 + ($loan->interest * ($loan->tenure / 52))); // simple interest, A = P(1 + rt)
+
+        $paymentAmount = $loan->amount + ($loan->amount * $loan->interest * ($loan->tenure / 52) * 0.01); // simple interest = P + (P * T * R) / 100;
 
         $paymentDate = Carbon::today()->startOfWeek(); // current week monday
         $loanRepayments = [];
@@ -76,7 +77,6 @@ class LoanApplicationService
             ];
         }
 
-        dd($loanRepayments);
         return $loanRepayments;
     }
 

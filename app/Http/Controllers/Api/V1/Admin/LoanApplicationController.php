@@ -63,10 +63,10 @@ class LoanApplicationController extends ApiController
 
         $loan = LoanApplication::where('id', $id)->first();
 
-//        // show error if loan was already processed
-//        if($loan->status != 'applied'){
-//            return $this->sendError('Loan was already processed', [], 422);
-//        }
+        // show error if loan was already processed
+        if($loan->status != 'applied'){
+            return $this->sendError('Loan was already processed', [], 422);
+        }
 
 
         $processed = $this->loanService->processLoan($loan, $request->input('approve'));
