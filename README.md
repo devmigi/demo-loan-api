@@ -2,11 +2,10 @@
 **Laravel Code Challenge**
 > Your task is to build a mini-aspire API:\
 It is an app that allows authenticated users to go through a loan application. It doesn’t have to contain too many fields, but at least “amount
-required” and “loan term.” All the loans will be assumed to have a “weekly” repayment frequency.
+required” and “loan term.” **All the loans will be assumed to have a “weekly” repayment frequency.**\
 After the loan is approved, the user must be able to submit the weekly loan repayments. It can be a simplified repay functionality, which won’t
 need to check if the dates are correct but will just set the weekly amount to be repaid.
 
-\
 \
 **Notes**:
 - Build fully functional REST API without any UI
@@ -15,7 +14,7 @@ need to check if the dates are correct but will just set the weekly amount to be
 - The quality of the tests is one of the key factors
 - Include brief documentation for the project: the choices you made and why
 
-
+\
 **Nice-to-have**:
 - script to install the app in one go
 - postman collection/openAPI document for the API

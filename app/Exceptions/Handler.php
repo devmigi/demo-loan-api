@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -34,8 +37,34 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (Throwable $exception, $request) {
+
+            // Api error response
+            $apiErrorResponse = [
+                'message' => 'Server Error!',
+                'code' => 500
+            ];
+
+            if ($exception instanceof NotFoundHttpException) {
+                $apiErrorResponse['message'] = 'Invalid Url!';
+                $apiErrorResponse['code'] = 404;
+            }
+            else if ($exception instanceof AuthenticationException) {
+                $apiErrorResponse['message'] = 'Unauthenticated';
+                $apiErrorResponse['code'] = 403;
+            }
+
+            // If debug mode is enabled
+            if (config('app.debug')) {
+                // Add the exception class name, message and stack trace to response
+                $apiErrorResponse['exception'] = get_class($exception); // Reflection might be better here
+                $apiErrorResponse['message'] = $exception->getMessage();
+            }
+
+            Log::error(json_encode($exception->getMessage()));
+
+            return response()->json($apiErrorResponse, $apiErrorResponse['code']);
+
         });
     }
 }
