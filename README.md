@@ -13,7 +13,7 @@ This project can be easily started using [Laravel sail](https://laravel.com/docs
 - use postman collection(from repo or [this link](https://raw.githubusercontent.com/devmigi/demo-loan-api/master/loan_api_postman_collection.json)) to start using APIs
 
 
-####API Endpoints
+#### API Endpoints
 \
 **Public APIs** (without authentication):
  - POST - /api/v1/register (Register API)
@@ -50,7 +50,7 @@ This project can be easily started using [Laravel sail](https://laravel.com/docs
 
 ---
 
-###Laravel Code Challenge
+### Laravel Code Challenge
 > Your task is to build a mini-aspire API:\
 It is an app that allows authenticated users to go through a loan application. It doesn’t have to contain too many fields, but at least “amount
 required” and “loan term.” **All the loans will be assumed to have a “weekly” repayment frequency.**\
