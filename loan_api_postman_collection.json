@@ -107,14 +107,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/api/v1/profile",
+							"raw": "{{baseUrl}}/api/v1/logout",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
 								"v1",
-								"profile"
+								"logout"
 							]
 						}
 					},
