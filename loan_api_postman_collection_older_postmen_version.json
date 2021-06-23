@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "8b3f0306-bdb1-4153-ad99-ff0a0260129d",
+		"name": "Loan API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login API",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/login?email=user1@test.com&password=test123&device_name=postman",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "user1@test.com"
+								},
+								{
+									"key": "password",
+									"value": "test123"
+								},
+								{
+									"key": "device_name",
+									"value": "postman"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register API",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/register?name=New TestUser&email=useruser@test.com&password=test1234&device_name=postman",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"register"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "New TestUser"
+								},
+								{
+									"key": "email",
+									"value": "useruser@test.com"
+								},
+								{
+									"key": "password",
+									"value": "test1234"
+								},
+								{
+									"key": "device_name",
+									"value": "postman"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout API",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Bearer Token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/v1/logout"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loan Application",
+			"item": [
+				{
+					"name": "Get All User loan applications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer Token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/v1/loans"
+					},
+					"response": []
+				},
+				{
+					"name": "Create new loan appication",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/loans?amount=50000&tenure_in_weeks=12",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"loans"
+							],
+							"query": [
+								{
+									"key": "amount",
+									"value": "50000"
+								},
+								{
+									"key": "tenure_in_weeks",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loan Repayments",
+			"item": [
+				{
+					"name": "Get User Repayments / EMI",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer Token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/v1/repayments"
+					},
+					"response": []
+				},
+				{
+					"name": "Repay pending EMI",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/repayments?emi_id=26",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"repayments"
+							],
+							"query": [
+								{
+									"key": "emi_id",
+									"value": "26"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Interest Rate/Loan Term",
+			"item": [
+				{
+					"name": "Get Interest Rates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/api/v1/interest-rate"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin - Approve/Reject Loan",
+			"item": [
+				{
+					"name": "Approve/Reject Loan Application",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer Token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/admin/loans/{{loan_id}}?approve=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"loans",
+								"{{loan_id}}"
+							],
+							"query": [
+								{
+									"key": "approve",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Loan Application Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Bearer Token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/api/v1/admin/loans/{{loan_id}}"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost"
+		},
+		{
+			"key": "loan_id",
+			"value": "1"
+		},
+		{
+			"key": "Bearer Token",
+			"value": "Bearer 1|fivsujvXjz1ymL7E5KnlWVNPhs4mQA0hLBH1Cegc"
+		}
+	]
+}
