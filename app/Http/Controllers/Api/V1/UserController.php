@@ -69,7 +69,7 @@ class UserController extends ApiController
         ]);
 
         if ($validator->fails()) {
-            return $this->sendError('Validation failed.',  $validator->errors());
+            return $this->sendError('Validation failed.',  $validator->errors(), 422);
         }
 
         $input = $request->all();
